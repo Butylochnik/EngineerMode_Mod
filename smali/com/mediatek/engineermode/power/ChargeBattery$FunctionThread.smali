@@ -22,8 +22,6 @@
 .method constructor <init>(Lcom/mediatek/engineermode/power/ChargeBattery;)V
     .locals 0
 
-    .prologue
-    .line 141
     iput-object p1, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
@@ -34,232 +32,157 @@
 
 # virtual methods
 .method public run()V
-    .locals 15
+    .locals 13
 
-    .prologue
-    const/4 v14, 0x3
+    const/4 v0, 0x0
 
-    const/4 v13, 0x2
-
-    const/4 v12, 0x1
-
-    const/4 v11, 0x0
-
-    .line 145
     :goto_0
-    iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    iget-object v1, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
-    invoke-static {v8}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$100(Lcom/mediatek/engineermode/power/ChargeBattery;)Z
+    invoke-static {v1}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$100(Lcom/mediatek/engineermode/power/ChargeBattery;)Z
 
-    move-result v8
+    move-result v1
 
-    if-eqz v8, :cond_3
+    if-eqz v1, :cond_4
 
-    .line 146
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v8, ""
+    const-string v2, ""
 
-    invoke-direct {v7, v8}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    .line 147
-    .local v7, "text":Ljava/lang/StringBuilder;
-    const-string v1, ""
+    const/4 v2, 0x0
 
-    .line 148
-    .local v1, "cmd":Ljava/lang/String;
+    :goto_1
+    iget-object v3, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+
+    invoke-static {v3}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+
+    move-result-object v3
+
+    array-length v3, v3
+
+    const/4 v4, 0x1
+
+    if-ge v2, v3, :cond_3
+
+    iget-object v3, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+
+    invoke-static {v3}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+
+    move-result-object v3
+
+    aget-object v3, v3, v2
+
     const/4 v5, 0x0
 
-    .local v5, "i":I
-    :goto_1
-    iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    aget-object v3, v3, v5
 
-    invoke-static {v8}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+    const-string v6, "SEP"
 
-    move-result-object v8
+    invoke-virtual {v3, v6}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
-    array-length v8, v8
+    move-result v3
 
-    if-ge v5, v8, :cond_2
+    if-eqz v3, :cond_0
 
-    .line 149
-    iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    const-string v3, "- - - - - - - - -\n"
 
-    invoke-static {v8}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    goto/16 :goto_3
 
-    aget-object v8, v8, v5
-
-    aget-object v8, v8, v11
-
-    const-string v9, "SEP"
-
-    invoke-virtual {v8, v9}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_0
-
-    .line 150
-    const-string v8, "- - - - - - - - -\n"
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 148
-    :goto_2
-    add-int/lit8 v5, v5, 0x1
-
-    goto :goto_1
-
-    .line 153
     :cond_0
-    new-instance v8, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v9, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    iget-object v6, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
-    invoke-static {v9}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$300(Lcom/mediatek/engineermode/power/ChargeBattery;)Ljava/lang/String;
+    invoke-static {v6}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$300(Lcom/mediatek/engineermode/power/ChargeBattery;)Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v6
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    iget-object v6, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
-    iget-object v9, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    invoke-static {v6}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
 
-    invoke-static {v9}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+    move-result-object v6
 
-    move-result-object v9
+    aget-object v6, v6, v2
 
-    aget-object v9, v9, v5
+    aget-object v6, v6, v5
 
-    aget-object v9, v9, v11
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v8
+    move-result-object v3
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iget-object v6, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
-    move-result-object v1
+    invoke-static {v6}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
 
-    .line 154
-    iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    move-result-object v6
 
-    invoke-static {v8}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+    aget-object v6, v6, v2
 
-    move-result-object v8
+    aget-object v6, v6, v4
 
-    aget-object v8, v8, v5
+    const-string v7, "mA"
 
-    aget-object v8, v8, v12
+    invoke-virtual {v6, v7}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
-    const-string v9, "mA"
+    move-result v6
 
-    invoke-virtual {v8, v9}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+    const/4 v7, 0x2
 
-    move-result v8
+    const/4 v8, 0x3
 
-    if-eqz v8, :cond_1
+    if-eqz v6, :cond_2
 
-    .line 155
-#    const-wide/16 v3, 0x0
-
-    .line 157
     :try_start_0
-    iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    iget-object v6, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
-    invoke-static {v8, v1}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$400(Lcom/mediatek/engineermode/power/ChargeBattery;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v6, v3}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$400(Lcom/mediatek/engineermode/power/ChargeBattery;Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v8
+    move-result-object v6
 
-    invoke-static {v8}, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
+    invoke-static {v6}, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
 
-    move-result-object v8          # v8 contains Long object (pointer?)
+    move-result-object v6
 
+    invoke-virtual {v6}, Ljava/lang/Long;->longValue()J
 
-    invoke-virtual {v8}, Ljava/lang/Long;->longValue()J
-    
+    move-result-wide v9
     :try_end_0
     .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result-wide v9            # v9, v10 now contains long value where v10 is always 0
-    
-    const-wide/32 v3, 0x7FFFFFFF   # max_int
-    
-    cmp-long v8, v9, v3
-    
-    if-lez v8, :int_chk_end
-    
-    const-wide v3, 0x100000000L
-    
-    sub-long/2addr v9, v3
-    
-    :int_chk_end
-    long-to-float v8, v9
-    
-    const/high16 v9, 0x41200000    # 10.0f
+    const-wide/32 v11, 0x7fffffff
 
-    div-float/2addr v8, v9
+    cmp-long v6, v9, v11
 
-#    float-to-double v3, v8
-    move v3, v8
+    if-lez v6, :cond_1
 
-    .line 161
-    :goto_3
-    const-string v8, "%1$-28s:[ %2$-6s ]%3$s\n"
+    const-wide v11, 0x100000000L
 
-    new-array v9, v14, [Ljava/lang/Object;
+    sub-long/2addr v9, v11
 
-    iget-object v10, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+    :cond_1
+    long-to-float v6, v9
 
-    invoke-static {v10}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+    const/high16 v11, 0x41200000    # 10.0f
 
-    move-result-object v10
+    div-float/2addr v6, v11
 
-    aget-object v10, v10, v5
-
-    aget-object v10, v10, v11
-
-    aput-object v10, v9, v11
-
-#    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
-    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
-
-    move-result-object v10
-
-    aput-object v10, v9, v12
-
-    iget-object v10, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
-
-    invoke-static {v10}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
-
-    move-result-object v10
-
-    aget-object v10, v10, v5
-
-    aget-object v10, v10, v12
-
-    aput-object v10, v9, v13
-
-    invoke-static {v8, v9}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move v0, v6
 
     goto :goto_2
 
-    .line 158
     :catch_0
-    move-exception v2
-
-    .line 159
-    .local v2, "e":Ljava/lang/NumberFormatException;
-    const-string v8, "EM-PMU"
+    move-exception v6
 
     new-instance v9, Ljava/lang/StringBuilder;
 
@@ -269,144 +192,165 @@
 
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v9
-
     iget-object v10, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
     invoke-static {v10}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
 
     move-result-object v10
 
+    aget-object v10, v10, v2
+
     aget-object v10, v10, v5
 
-    aget-object v10, v10, v11
-
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
 
     invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v9
 
-    invoke-static {v8, v9}, Lcom/mediatek/engineermode/Elog;->e(Ljava/lang/String;Ljava/lang/String;)V
+    const-string v10, "EM-PMU"
 
-    goto :goto_3
+    invoke-static {v10, v9}, Lcom/mediatek/engineermode/Elog;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 163
-    .end local v2    # "e":Ljava/lang/NumberFormatException;
+    :goto_2
+    new-array v6, v8, [Ljava/lang/Object;
 
-    :cond_1
-    const-string v8, "%1$-28s: [ %2$-6s ]%3$s\n"
+    iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
-    new-array v9, v14, [Ljava/lang/Object;
-
-    iget-object v10, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
-
-    invoke-static {v10}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
-
-    move-result-object v10
-
-    aget-object v10, v10, v5
-
-    aget-object v10, v10, v11
-
-    aput-object v10, v9, v11
-
-    iget-object v10, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
-
-    invoke-static {v10, v1}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$400(Lcom/mediatek/engineermode/power/ChargeBattery;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v10
-
-    aput-object v10, v9, v12
-
-    iget-object v10, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
-
-    invoke-static {v10}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
-
-    move-result-object v10
-
-    aget-object v10, v10, v5
-
-    aget-object v10, v10, v12
-
-    aput-object v10, v9, v13
-
-    invoke-static {v8, v9}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v8}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
 
     move-result-object v8
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    aget-object v8, v8, v2
 
-    goto/16 :goto_2
+    aget-object v8, v8, v5
 
-    .line 167
+    aput-object v8, v6, v5
+
+    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+
+    move-result-object v5
+
+    aput-object v5, v6, v4
+
+    iget-object v5, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+
+    invoke-static {v5}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+
+    move-result-object v5
+
+    aget-object v5, v5, v2
+
+    aget-object v4, v5, v4
+
+    aput-object v4, v6, v7
+
+    const-string v4, "%1$-28s:[ %2$-6s ]%3$s\n"
+
+    invoke-static {v4, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    goto :goto_3
+
     :cond_2
-    new-instance v0, Landroid/os/Bundle;
+    new-array v6, v8, [Ljava/lang/Object;
 
-    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
-
-    .line 168
-    .local v0, "b":Landroid/os/Bundle;
-    const-string v8, "INFO"
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-virtual {v0, v8, v9}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 170
-    new-instance v6, Landroid/os/Message;
-
-    invoke-direct {v6}, Landroid/os/Message;-><init>()V
-
-    .line 171
-    .local v6, "msg":Landroid/os/Message;
-    iput v12, v6, Landroid/os/Message;->what:I
-
-    .line 172
-    invoke-virtual {v6, v0}, Landroid/os/Message;->setData(Landroid/os/Bundle;)V
-
-    .line 174
     iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
-    iget-object v8, v8, Lcom/mediatek/engineermode/power/ChargeBattery;->mUpdateHandler:Landroid/os/Handler;
+    invoke-static {v8}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
 
-    invoke-virtual {v8, v6}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+    move-result-object v8
 
-    .line 176
-    const-wide/16 v8, 0x5dc
+    aget-object v8, v8, v2
+
+    aget-object v8, v8, v5
+
+    aput-object v8, v6, v5
+
+    iget-object v5, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+
+    invoke-static {v5, v3}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$400(Lcom/mediatek/engineermode/power/ChargeBattery;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v5
+
+    aput-object v5, v6, v4
+
+    iget-object v5, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+
+    invoke-static {v5}, Lcom/mediatek/engineermode/power/ChargeBattery;->access$200(Lcom/mediatek/engineermode/power/ChargeBattery;)[[Ljava/lang/String;
+
+    move-result-object v5
+
+    aget-object v5, v5, v2
+
+    aget-object v4, v5, v4
+
+    aput-object v4, v6, v7
+
+    const-string v4, "%1$-28s: [ %2$-6s ]%3$s\n"
+
+    invoke-static {v4, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    :goto_3
+    add-int/lit8 v2, v2, 0x1
+
+    goto/16 :goto_1
+
+    :cond_3
+    new-instance v2, Landroid/os/Bundle;
+
+    invoke-direct {v2}, Landroid/os/Bundle;-><init>()V
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    const-string v5, "INFO"
+
+    invoke-virtual {v2, v5, v3}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    new-instance v3, Landroid/os/Message;
+
+    invoke-direct {v3}, Landroid/os/Message;-><init>()V
+
+    iput v4, v3, Landroid/os/Message;->what:I
+
+    invoke-virtual {v3, v2}, Landroid/os/Message;->setData(Landroid/os/Bundle;)V
+
+    iget-object v4, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
+
+    iget-object v4, v4, Lcom/mediatek/engineermode/power/ChargeBattery;->mUpdateHandler:Landroid/os/Handler;
+
+    invoke-virtual {v4, v3}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+
+    const-wide/16 v4, 0x5dc
 
     :try_start_1
-    invoke-static {v8, v9}, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->sleep(J)V
+    invoke-static {v4, v5}, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->sleep(J)V
     :try_end_1
     .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_1
 
-    goto/16 :goto_0
+    goto :goto_4
 
-    .line 177
     :catch_1
-    move-exception v2
+    move-exception v4
 
-    .line 178
-    .local v2, "e":Ljava/lang/InterruptedException;
-    const-string v8, "EM_BATTERY_CHARGE"
+    const-string v5, "EM_BATTERY_CHARGE"
 
-    const-string v9, "Catch InterruptedException"
+    const-string v6, "Catch InterruptedException"
 
-    invoke-static {v8, v9}, Lcom/mediatek/engineermode/Elog;->e(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v5, v6}, Lcom/mediatek/engineermode/Elog;->e(Ljava/lang/String;Ljava/lang/String;)V
 
+    :goto_4
     goto/16 :goto_0
 
-    .line 181
-    .end local v0    # "b":Landroid/os/Bundle;
-    .end local v1    # "cmd":Ljava/lang/String;
-    .end local v2    # "e":Ljava/lang/InterruptedException;
-    .end local v5    # "i":I
-    .end local v6    # "msg":Landroid/os/Message;
-    .end local v7    # "text":Ljava/lang/StringBuilder;
-    :cond_3
+    :cond_4
     return-void
 .end method
