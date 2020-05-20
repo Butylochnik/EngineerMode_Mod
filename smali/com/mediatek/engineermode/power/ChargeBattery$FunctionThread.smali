@@ -177,16 +177,34 @@
 
     move-result-object v8
 
-    invoke-static {v8}, Ljava/lang/Float;->valueOf(Ljava/lang/String;)Ljava/lang/Float;
+#    invoke-static {v8}, Ljava/lang/Float;->valueOf(Ljava/lang/String;)Ljava/lang/Float;
+    invoke-static {v8}, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
 
-    move-result-object v8
+    move-result-object v8          # v8 contains Long object (pointer?)
 
-    invoke-virtual {v8}, Ljava/lang/Float;->floatValue()F
+
+#    invoke-virtual {v8}, Ljava/lang/Float;->floatValue()F
+    invoke-virtual {v8}, Ljava/lang/Long;->longValue()J
+    
     :try_end_0
     .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v8
-
+#    move-result v8
+    move-result-wide v9            # v9, v10 now contains long value where v10 is always 0
+    
+    const-wide/32 v3, 0x7FFFFFFF   # max_int
+    
+    cmp-long v8, v9, v3
+    
+    if-lez v8, :int_chk_end
+    
+    const-wide v3, 0x100000000L
+    
+    sub-long/2addr v9, v3
+    
+    :int_chk_end
+    long-to-float v8, v9
+    
     const/high16 v9, 0x41200000    # 10.0f
 
     div-float/2addr v8, v9
