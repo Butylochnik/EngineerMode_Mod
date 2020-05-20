@@ -166,10 +166,9 @@
     if-eqz v8, :cond_1
 
     .line 155
-    const-wide/16 v3, 0x0
+#    const-wide/16 v3, 0x0
 
     .line 157
-    .local v3, "f":D
     :try_start_0
     iget-object v8, p0, Lcom/mediatek/engineermode/power/ChargeBattery$FunctionThread;->this$0:Lcom/mediatek/engineermode/power/ChargeBattery;
 
@@ -177,19 +176,16 @@
 
     move-result-object v8
 
-#    invoke-static {v8}, Ljava/lang/Float;->valueOf(Ljava/lang/String;)Ljava/lang/Float;
     invoke-static {v8}, Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
 
     move-result-object v8          # v8 contains Long object (pointer?)
 
 
-#    invoke-virtual {v8}, Ljava/lang/Float;->floatValue()F
     invoke-virtual {v8}, Ljava/lang/Long;->longValue()J
     
     :try_end_0
     .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
-#    move-result v8
     move-result-wide v9            # v9, v10 now contains long value where v10 is always 0
     
     const-wide/32 v3, 0x7FFFFFFF   # max_int
@@ -209,7 +205,8 @@
 
     div-float/2addr v8, v9
 
-    float-to-double v3, v8
+#    float-to-double v3, v8
+    move v3, v8
 
     .line 161
     :goto_3
@@ -229,7 +226,8 @@
 
     aput-object v10, v9, v11
 
-    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+#    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+    invoke-static {v3}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
     move-result-object v10
 
@@ -297,7 +295,7 @@
 
     .line 163
     .end local v2    # "e":Ljava/lang/NumberFormatException;
-    .end local v3    # "f":D
+
     :cond_1
     const-string v8, "%1$-28s: [ %2$-6s ]%3$s\n"
 
